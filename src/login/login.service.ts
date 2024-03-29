@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import secretKey from 'src/config/generateSecretKey';
+import tokenIs from 'src/config/generateToken';
 
 @Injectable()
 export class LoginService {
@@ -10,7 +10,7 @@ export class LoginService {
     // Generate JWT token
     const payload = { email };
 
-    return this.jwtService.sign(payload, { secret: secretKey }); 
+    return this.jwtService.sign(payload, { secret: tokenIs }); 
   }
 }
 

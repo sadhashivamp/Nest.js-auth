@@ -4,7 +4,7 @@ import { UserController } from './signup/signup.controller';
 import { UserService } from './signup/signup.service';
 import { UserSchema } from './signup/signup.model';
 import { JwtModule } from '@nestjs/jwt';
-import secretKey from './config/generateSecretKey';
+import tokenIs from './config/generateToken';
 import { LoginService } from './login/login.service';
 import { LoginController } from './login/login.controller';
 
@@ -13,7 +13,7 @@ import { LoginController } from './login/login.controller';
     MongooseModule.forRoot('mongodb://localhost:27017/nestjs_db'),
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
     JwtModule.register({
-      secret: secretKey, // Replace with your actual secret key
+      secret: tokenIs, // Replace with your actual secret key
       signOptions: { expiresIn: '1h' }, // Token expiration time
     }),
   ],

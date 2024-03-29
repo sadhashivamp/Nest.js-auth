@@ -5,14 +5,14 @@ const generateSecretKey = (): string => {
   return randomBytes(32).toString('hex');
 };
 
-const secretKey = generateSecretKey();
-console.log('Generated secret key:', secretKey);
+const tokenIs = generateSecretKey();
+console.log('Generated secret key:', tokenIs);
 
 // Write the secret key to the configuration file
 const configContent = `export const jwtConstants = {
-  secret: '${secretKey}',
+  secret: '${tokenIs}',
 };
 `;
 writeFileSync('config.ts', configContent);
 
-export default secretKey; // Export the secret key
+export default tokenIs; // Export the secret key
